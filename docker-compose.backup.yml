@@ -1,0 +1,23 @@
+# SERVICES -> ALL THE CONTAINERS WE WANT TO CREATE
+# NODE-APP -> CONTAINER NAME, CAN BE ANY
+
+# BUILD -> THE PATH TO THE Dockerfile, so it can build the docker image
+# PORTS -> LIST OF PORTS WE WILL EXPOSE
+# VOLUMES -> THE VOLUMES WE WILL USE, THE BIND MOUNT AND THE PRESERVE NODE_MODULES
+# ENVIRONMENT -> ENVIRONMENT VARIABLES
+
+# REMBEMBER, INDENTING MATTERS IN YML FILES
+
+version: "3"
+services:
+  node-app:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    environment:
+      - PORT=3000
+    # env_file:
+    # - ./.env
